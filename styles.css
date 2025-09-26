@@ -1,0 +1,277 @@
+/* ====== Base ====== */
+:root{
+  --bg: #F8F7F4;            /* теплий айворі */
+  --ink: #2F2F2F;           /* темний текст */
+  --muted: #6C6C6C;
+
+  --rose: #F4B3C2;          /* пастельна троянда */
+  --mint: #CFE9E6;          /* м’ята */
+  --lilac: #EBDCF5;         /* ліловий */
+  --butter: #FFF1C9;        /* м’яке жовте для акцентів */
+
+  --card: #FFFFFF;
+  --radius-xl: 22px;
+  --radius-lg: 16px;
+  --shadow-soft: 0 10px 30px rgba(20,20,20,.06);
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,h2,h3{
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.2;
+  margin: 0 0 .5rem 0;
+}
+h1{ font-size: clamp(2rem, 5vw, 3.2rem); }
+h2{ font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+h3{ font-size: 1.2rem; }
+
+p{ margin: 0 0 1rem 0; color: var(--ink); }
+.lead{ font-size: 1.1rem; color:#383838; }
+
+.container{ width:min(1120px, 90%); margin-inline:auto; }
+.narrow{ width:min(760px, 90%); margin-inline:auto; }
+
+.section-pad{ padding: 64px 0; }
+
+.btn{
+  display:inline-block;
+  padding:.9rem 1.2rem;
+  border-radius: 999px;
+  text-decoration:none;
+  font-weight:600;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  border: 2px solid transparent;
+}
+.btn-primary{
+  background: linear-gradient(135deg, var(--rose), var(--lilac));
+  color:#1e1e1e;
+  box-shadow: 0 10px 20px rgba(244,179,194,.35);
+}
+.btn-primary:hover{ transform: translateY(-1px); }
+.btn-ghost{
+  background: #ffffffc4;
+  border-color: #ffffff;
+  color:#333;
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover{ transform: translateY(-1px); }
+
+/* ====== Header ====== */
+.site-header{
+  position: sticky;
+  top:0; z-index: 50;
+  background: #ffffffb3;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 0;
+}
+.brand{
+  display:flex; align-items:center; gap:.6rem;
+  font-family:"Playfair Display", serif;
+  font-weight:700; font-size:1.25rem;
+  color:#1e1e1e; text-decoration:none;
+  line-height:1; /* важливо для вертикального центру */
+}
+.brand-mark{
+  width:28px; height:28px;
+  display:grid; place-items:center;
+  border-radius:9px;
+  background: linear-gradient(135deg, var(--mint), var(--lilac));
+  box-shadow: var(--shadow-soft);
+  font-size:16px; line-height:1;
+  transform: translateY(-1px); /* легке вирівнювання символу ★ */
+}
+
+.nav{ display:flex; align-items:center; gap:.9rem; }
+.nav a{ color:#2b2b2b; text-decoration:none; font-weight:600; }
+.nav a:hover{ text-decoration:underline; }
+
+/* ====== Decorative Background ====== */
+.bg-decor{
+  position: fixed; inset: 0; z-index:-1;
+  background:
+    radial-gradient(600px 400px at 10% -10%, rgba(207,233,230,.55), transparent 60%),
+    radial-gradient(500px 350px at 100% 0%, rgba(235,220,245,.55), transparent 55%),
+    radial-gradient(420px 320px at 20% 100%, rgba(244,179,194,.45), transparent 55%),
+    radial-gradient(360px 260px at 85% 90%, rgba(255,241,201,.5), transparent 60%);
+}
+
+/* ====== Hero ====== */
+.hero{ padding: 72px 0 40px; }
+.hero-grid{
+  display:grid; gap: 2rem;
+  grid-template-columns: 1.15fr .85fr;
+}
+.hero-copy .hero-cta{ display:flex; gap:.75rem; margin: 1rem 0 1.1rem; }
+.hero-badges{
+  list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:.5rem;
+}
+.hero-badges li{
+  padding:.45rem .75rem; border-radius:999px; font-size:.9rem; font-weight:600;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Photo card */
+.card-soft{
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+.hero-photo{
+  padding: .6rem;
+  align-self:start;
+}
+.hero-photo img{
+  display:block; width:100%; height:auto;
+  border-radius: calc(var(--radius-xl) - 6px);
+  object-fit: cover;
+}
+
+/* ====== About ====== */
+.about h2{ margin-bottom: .5rem; }
+.about p{ color:#3a3a3a; }
+
+/* ====== Services ====== */
+.services .cards{
+  display:grid; gap:1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+.card{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.2rem 1.1rem;
+  box-shadow: var(--shadow-soft);
+}
+.card h3{ margin-bottom:.25rem; }
+.card p{ color: var(--muted); }
+
+/* ====== Contact ====== */
+.contact-lead{ color:#3a3a3a; margin-bottom: 1rem; }
+.contact-grid{
+  display:grid; gap:.8rem; grid-template-columns: 1fr 1fr;
+}
+.contact-item{
+  padding: 1rem 1.1rem;
+  text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:.2rem;
+}
+.ci-title{ font-weight:700; letter-spacing:.02em; }
+.ci-value{ color:#3a3a3a; }
+
+/* ====== Footer ====== */
+.site-footer{
+  padding: 36px 0 44px;
+  border-top: 1px solid rgba(0,0,0,.06);
+  background: #ffffffb8;
+  backdrop-filter: blur(6px);
+}
+.footer-inner{ text-align:center; }
+.foot-sub{ color:#565656; margin: .2rem 0 0; }
+.note{ color:#6a6a6a; font-size:.95rem; margin-top:.6rem; }
+
+/* ====== Responsive ====== */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns: 1fr; align-items:center; }
+  .hero-photo{ order:-1; }
+  .services .cards{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .nav a:not(.btn){ display:none; } /* спрощене меню на мобільному */
+  .services .cards{ grid-template-columns: 1fr; }
+  .contact-grid{ grid-template-columns: 1fr; }
+}
+.contact-form { margin-top: 1rem; padding: 1rem 1.1rem; }
+.field { display:flex; flex-direction:column; gap:.35rem; margin-bottom:.8rem; }
+.field label { font-weight:600; color:#333; }
+.field input, .field textarea {
+  appearance:none; width:100%;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:12px; padding:.9rem 1rem;
+  background:#fff; color:#1f1f1f; font-size:1rem;
+  box-shadow:0 2px 10px rgba(0,0,0,.03) inset;
+}
+.field input:focus, .field textarea:focus { outline:2px solid var(--mint); border-color: transparent; }
+.form-status { margin:.6rem 0 0; color:#3a3a3a; font-weight:600; }
+.form-privacy { color:#666; font-size:.92rem; margin:.4rem 0 0; }
+.hp { position:absolute !important; left:-9999px !important; width:1px; height:1px; }
+
+/* ==== Header on scroll ==== */
+.site-header.scrolled{
+  background:#fff; border-bottom-color: rgba(0,0,0,.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+/* ==== Scroll reveal ==== */
+.reveal{
+  opacity:0; transform: translateY(14px) scale(.98);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible{
+  opacity:1; transform: translateY(0) scale(1);
+}
+
+/* ==== FAQ accordion (fixed) ==== */
+.faq .qa{
+  cursor:pointer; overflow:hidden;
+  transition: box-shadow .2s ease, border-color .2s;
+}
+.faq .qa + .qa{ margin-top:.2rem; }
+.faq .qa h3{
+  display:flex; align-items:center; gap:.5rem; margin:0;
+  padding:.6rem .1rem;
+}
+.faq .qa h3::after{
+  content:"+"; margin-left:auto; font-weight:700; color:#666;
+  transition: transform .2s ease;
+}
+.faq .qa.open h3::after{ transform: rotate(45deg); }
+
+/* критично: повністю ховаємо вміст відповіді */
+.faq .qa p{
+  margin:0; padding:0 .1rem 0 0;
+  max-height:0; overflow:hidden;
+  transition:max-height .35s ease;
+}
+.faq .qa.open p{
+  /* відкрито — розгортаємо (вистачить для довгого тексту) */
+  max-height:520px;
+}
+
+
+/* ==== Back-to-top FAB ==== */
+.to-top{
+  position: fixed; right: 18px; bottom: 18px; z-index:60;
+  width:48px; height:48px; border-radius:999px; border:0;
+  background: linear-gradient(135deg, var(--mint), var(--lilac));
+  color:#1e1e1e; font-weight:800; font-size:18px; line-height:48px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  cursor:pointer; opacity:0; visibility:hidden; transform: translateY(10px);
+  transition: opacity .25s ease, transform .25s ease, visibility 0s .25s;
+}
+.to-top.show{ opacity:1; visibility:visible; transform: translateY(0); transition: opacity .25s, transform .25s; }
+
+/* ==== Slight card hover (deluxe) ==== */
+.card, .card-soft{
+  transition: transform .18s ease, box-shadow .25s ease;
+}
+.card:hover, .card-soft:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.10);
+}
